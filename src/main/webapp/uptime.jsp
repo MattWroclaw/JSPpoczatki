@@ -1,7 +1,8 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.util.concurrent.TimeUnit" %>
-<%@ page import="paczka.UptimeService" %><%--
+<%@ page import="Uptimeservice.UptimeService" %>
+<%@ page import="Uptimeservice.UptimeService" %><%--
   Created by IntelliJ IDEA.
   User: mateu
   Date: 21.09.2019

@@ -62,8 +62,9 @@ najczęściej używa się go do drukowania wartości zmiennych lub metod--%>
  hello()
 %>
 
-<% Cookie[] ht = request.getCookies();
-out.print("długość ciasteczka: "+ Arrays.stream(ht));%>
+<%=
+page.getClass().getCanonicalName()
+%>
 
 <%@ include file="footer.jsp"%>
 
