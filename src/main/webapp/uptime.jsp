@@ -1,6 +1,7 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.time.LocalDateTime" %>
-<%@ page import="java.util.concurrent.TimeUnit" %><%--
+<%@ page import="java.util.concurrent.TimeUnit" %>
+<%@ page import="paczka.UptimeService" %><%--
   Created by IntelliJ IDEA.
   User: mateu
   Date: 21.09.2019
@@ -17,18 +18,28 @@
 <h2>Up time of this app</h2>
 
 <%--tutaj jest ważne że w deklaracji ustanawiamy pole w tych wykrzyknikach i to jest stałe! --%>
+<%--poniższa deklaracja jest wykonywana tylko raz, przy starcie servletu (wejściu na tą stronę)--%>
 <%! private long startTime = System.currentTimeMillis(); %>
-<% long upTime = System.currentTimeMillis() - startTime;
-out.print("UpTime in milis: "+upTime);
+<%!
+    private String getUpTimeMessage(){
+        long upTime = System.currentTimeMillis()-startTime;
+        long hours = upTime/3600000;
+        long minutes = upTime/60000 %60;
+        long seconds = upTime / 1000 %60;
 
-    String czas = String.format("%d min, %d sec",
-            TimeUnit.MILLISECONDS.toMinutes(upTime),
-            TimeUnit.MILLISECONDS.toSeconds(upTime) -
-                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(upTime))
-    );
+        return String.format("Uptime: %dh %dm %ds", hours, minutes, seconds);
+    }
+%>
+<%= getUpTimeMessage()%>
+<%--wywołanie z klasy--%>
+<%!
+    private UptimeService uptimeService = new UptimeService();
+%>
+</br>
+<h2>Poniżej czas uzyskany z oddzielnej klasy Java (UptimeService)</h2>
+<%=
 
-out.print("</br>"+czas);
-
+uptimeService.getUpTimeService()
 %>
 
 </br>

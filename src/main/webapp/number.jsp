@@ -15,7 +15,7 @@
 <h2>Random nr 0-99</h2>
 
 <% Random r = new Random();
-    int zmienna = r.nextInt(99);
+    int zmienna = r.nextInt(100);
     out.print("wylosowana liczba to: "+zmienna);
 %>
 </br>
@@ -30,7 +30,7 @@ if (zmienna<50){
     out.print("<font color ='blue'> Liczba mniejsza od 50</font>");
 
 } else {
-    out.print("<font color = 'green'> Liczba większa lub równa 50</font>");
+    out.print("Wylosowana liczba: <span style='color : red'>"+zmienna+"</span>");
 }
 %></h2>
 
