@@ -13,10 +13,13 @@
 <body>
 
 <h1>Hello, JPS2!</h1>
-<a href="index.jsp">Main page</a>
-<a href="uptime.jsp">Uptime</a>
-<a href="number.jsp">Random number</a>
-<a href="multiplication.jsp">Multiplication table</a>
+<a href="index.jsp">Main page</a> |
+<a href="uptime.jsp">Uptime</a> |
+<a href="number.jsp">Random number</a> |
+<a href="multiplication.jsp">Multiplication table</a> |
+<%=
+request.getParameter("parameter")
+%>
 
 
 </body>

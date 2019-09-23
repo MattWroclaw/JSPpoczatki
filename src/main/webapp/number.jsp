@@ -11,7 +11,10 @@
     <title>Random number</title>
 </head>
 <body>
-<%@ include file="header.jsp"%>
+<jsp:include page="header.jsp">
+    <jsp:param name="parameter"
+               value="3"/>
+</jsp:include>
 <h2>Random nr 0-99</h2>
 
 <% Random r = new Random();

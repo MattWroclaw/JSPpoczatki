@@ -24,11 +24,31 @@ oraz <project_name exploded>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="header.jsp" %>
-    <title>Hello, JSP!</title>
+    <jsp:include page="header.jsp">
+        <jsp:param name="parameter"
+                   value="1"/>
+    </jsp:include>
+    <title>Hello, <%=request.getParameter("firstName") %>!</title>
 </head>
 <body>
-<h1>Hello, jsp!! :) </h1>
+<%
+    // Sprawdzamy czy w requeście istnieje parametr o nazwie "firstName"
+    // Jeśli istnieje - zapisz w sesji
+    String firstName = request.getParameter("firstName");
+    if (firstName != null && !firstName.isEmpty()) {
+        session.setAttribute("firstName", firstName);
+    }
+%>
+
+<%--Sprawdzamy czy w sesji istnieje atrybut (zmienna) o nazwie "firstName".--%>
+<%--Jeśli istnieje, używamy jej do powitania użytkownika--%>
+<h1>Hello, <%= session.getAttribute("firstName") != null ? session.getAttribute("firstName") : "JSP"%>!</h1>
+
+<form action="index.jsp" method="post">
+    <label for="firstNameInputId">Imię</label>
+    <input type="text" id="firstNameInputId" name="firstName"/>
+    <input type="submit" value="Wyślij"/>
+</form>
 
 <%--WYRAŻENIE:tutaj musi być pojedyncze wywłoanie które coś zwraca
 może to być też obiekt--%>

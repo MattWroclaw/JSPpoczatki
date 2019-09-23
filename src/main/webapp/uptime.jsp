@@ -15,7 +15,10 @@
     <title>Uptime</title>
 </head>
 <body>
-<%@ include file="header.jsp"%>
+<jsp:include page="header.jsp">
+    <jsp:param name="parameter"
+               value="strona 4"/>
+</jsp:include>
 <h2>Up time of this app</h2>
 
 <%--tutaj jest ważne że w deklaracji ustanawiamy pole w tych wykrzyknikach i to jest stałe! --%>
